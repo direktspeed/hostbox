@@ -29,7 +29,7 @@ def get_services():
 		{ "name": "OpenDKIM", "port": 8891, "public": False, },
 		{ "name": "OpenDMARC", "port": 8893, "public": False, },
 		{ "name": "Memcached", "port": 11211, "public": False, },
-		{ "name": "Mail-in-a-Box Management Daemon", "port": 10222, "public": False, },
+		{ "name": "direktspeed-os-hostbox Management Daemon", "port": 10222, "public": False, },
 		{ "name": "SSH Login (ssh)", "port": get_ssh_port(), "public": True, },
 		{ "name": "Public DNS (nsd4)", "port": 53, "public": True, },
 		{ "name": "Incoming Mail (SMTP/postfix)", "port": 25, "public": True, },
@@ -784,8 +784,8 @@ def list_apt_updates(apt_update=True):
 	return pkgs
 
 def what_version_is_this(env):
-	# This function runs `git describe --abbrev=0` on the Mail-in-a-Box installation directory.
-	# Git may not be installed and Mail-in-a-Box may not have been cloned from github,
+	# This function runs `git describe --abbrev=0` on the direktspeed-os-hostbox installation directory.
+	# Git may not be installed and direktspeed-os-hostbox may not have been cloned from github,
 	# so this function may raise all sorts of exceptions.
 	miab_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 	tag = shell("check_output", ["/usr/bin/git", "describe", "--abbrev=0"], env={"GIT_DIR": os.path.join(miab_dir, '.git')}).strip()
@@ -806,7 +806,7 @@ def check_miab_version(env, output):
 	config = load_settings(env)
 
 	if config.get("privacy", True):
-		output.print_warning("Mail-in-a-Box version check disabled by privacy setting.")
+		output.print_warning("direktspeed-os-hostbox version check disabled by privacy setting.")
 	else:
 		try:
 			this_ver = what_version_is_this(env)
@@ -816,11 +816,11 @@ def check_miab_version(env, output):
 		latest_ver = get_latest_miab_version()
 
 		if this_ver == latest_ver:
-			output.print_ok("Mail-in-a-Box is up to date. You are running version %s." % this_ver)
+			output.print_ok("direktspeed-os-hostbox is up to date. You are running version %s." % this_ver)
 		elif latest_ver is None:
-			output.print_error("Latest Mail-in-a-Box version could not be determined. You are running version %s." % this_ver)
+			output.print_error("Latest direktspeed-os-hostbox version could not be determined. You are running version %s." % this_ver)
 		else:
-			output.print_error("A new version of Mail-in-a-Box is available. You are running version %s. The latest version is %s. For upgrade instructions, see https://mailinabox.email. "
+			output.print_error("A new version of direktspeed-os-hostbox is available. You are running version %s. The latest version is %s. For upgrade instructions, see https://mailinabox.email. "
 				% (this_ver, latest_ver))
 
 def run_and_output_changes(env, pool):

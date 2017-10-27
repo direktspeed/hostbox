@@ -6,7 +6,7 @@ import utils
 from mailconfig import get_mail_password, get_mail_user_privileges
 
 DEFAULT_KEY_PATH   = '/var/lib/mailinabox/api.key'
-DEFAULT_AUTH_REALM = 'Mail-in-a-Box Management Server'
+DEFAULT_AUTH_REALM = 'direktspeed-os-hostbox Management Server'
 
 class KeyAuthService:
 	"""Generate an API key for authenticating clients

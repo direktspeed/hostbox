@@ -474,7 +474,7 @@ def provision_certificates_cmdline():
 					print(", ".join(request["domains"]) + " need a new or renewed TLS certificate.")
 					print()
 					print("This box can't do that automatically for you until you agree to Let's Encrypt's")
-					print("Terms of Service agreement. Use the Mail-in-a-Box control panel to provision")
+					print("Terms of Service agreement. Use the direktspeed-os-hostbox control panel to provision")
 					print("certificates for these domains.")
 					sys.exit(1)
 
@@ -493,7 +493,7 @@ Please open this document in your web browser:
 
 It is Let's Encrypt's terms of service agreement. If you agree, I can
 provision that TLS certificate. If you don't agree, you will have an
-opportunity to install your own TLS certificate from the Mail-in-a-Box
+opportunity to install your own TLS certificate from the direktspeed-os-hostbox
 control panel.
 
 Do you agree to the agreement? Type Y or N and press <ENTER>: """
