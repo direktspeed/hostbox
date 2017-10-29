@@ -133,10 +133,10 @@ hide_output apt-get update
 # ### Suppress Upgrade Prompts
 # Since Mail-in-a-Box might jump straight to 18.04 LTS, there's no need
 # to be reminded about 16.04 on every login.
-if [ -f /etc/update-manager/release-upgrades ]; then
-	tools/editconf.py /etc/update-manager/release-upgrades Prompt=never
-	rm -f /var/lib/ubuntu-release-upgrader/release-upgrade-available
-fi
+#if [ -f /etc/update-manager/release-upgrades ]; then
+#	tools/editconf.py /etc/update-manager/release-upgrades Prompt=never
+#	rm -f /var/lib/ubuntu-release-upgrader/release-upgrade-available
+#fi
 
 # ### Set the system timezone
 #
@@ -313,20 +313,3 @@ fi
 
 restart_service bind9
 restart_service resolvconf
-
-# ### Fail2Ban Service
-
-# Configure the Fail2Ban installation to prevent dumb bruce-force attacks against dovecot, postfix, ssh, etc.
-rm -f /etc/fail2ban/jail.local # we used to use this file but don't anymore
-cat conf/fail2ban/jails.conf \
-	| sed "s/PUBLIC_IP/$PUBLIC_IP/g" \
-	| sed "s#STORAGE_ROOT#$STORAGE_ROOT#" \
-	> /etc/fail2ban/jail.d/mailinabox.conf
-cp -f conf/fail2ban/filter.d/* /etc/fail2ban/filter.d/
-
-# On first installation, the log files that the jails look at don't all exist.
-# e.g., The roundcube error log isn't normally created until someone logs into
-# Roundcube for the first time. This causes fail2ban to fail to start. Later
-# scripts will ensure the files exist and then fail2ban is given another
-# restart at the very end of setup.
-restart_service fail2ban
