@@ -76,6 +76,7 @@ tools/editconf.py /etc/postfix/main.cf \
 	milter_default_action=accept
 
 # Restart services.
-restart_service opendkim
-restart_service opendmarc
-restart_service postfix
+## DNS upgrade needs to run to write inital table
+#restart_service opendkim
+#restart_service opendmarc
+#restart_service postfix
