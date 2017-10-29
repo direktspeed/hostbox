@@ -14,7 +14,7 @@ fi
 	lsb_release -d | sed 's/.*:\s*//'
 	echo
 	echo "We can't write scripts that run on every possible setup, sorry."
-	exit
+	#exit
 #fi
 
 # Check that we have enough memory.
