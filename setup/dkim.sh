@@ -11,7 +11,7 @@ source /etc/mailinabox.conf # load global vars
 
 # Install DKIM...
 echo Installing OpenDKIM/OpenDMARC...
-apt_install opendkim opendkim-tools opendmarc
+RUNLEVEL=1 apt_install opendkim opendkim-tools opendmarc
 
 # Make sure configuration directories exist.
 mkdir -p /etc/opendkim;
@@ -79,4 +79,3 @@ tools/editconf.py /etc/postfix/main.cf \
 restart_service opendkim
 restart_service opendmarc
 restart_service postfix
-
