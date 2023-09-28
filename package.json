@@ -1,4 +1,10 @@
 {
   "name": "interface-hostbox",
   "version": "0.0.0",
+  "dependencies": {
+      "hostbox-pkg": "*"
+  },
+  "bundleDependencies": [
+    "hostbox-pkg"
+  ]
 }
