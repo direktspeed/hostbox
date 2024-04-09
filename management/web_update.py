@@ -110,7 +110,7 @@ def do_web_update(env):
 			nginx_conf += make_domain_config(domain, [template0, template3], ssl_certificates, env)
 
 	# Did the file change? If not, don't bother writing & restarting nginx.
-	nginx_conf_fn = "/etc/nginx/conf.d/local.conf"
+	nginx_conf_fn = "/etc/nginx/local.conf"
 	if os.path.exists(nginx_conf_fn):
 		with open(nginx_conf_fn, encoding='utf-8') as f:
 			if f.read() == nginx_conf:
@@ -124,6 +124,7 @@ def do_web_update(env):
 	# don't do a 'restart'. That would kill the connection before
 	# the API returns its response. A 'reload' should be good
 	# enough and doesn't break any open connections.
+	shell('check_call', ["/usr/bin/cp", "-f", "/etc/nginx/local.conf/conf.d"])
 	shell('check_call', ["/usr/sbin/service", "nginx", "reload"])
 
 	return "web updated\n"
