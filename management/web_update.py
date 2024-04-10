@@ -104,7 +104,7 @@ def do_web_update(env):
 			nginx_conf += make_domain_config(domain, [template0, "\trewrite ^(.*) https://$REDIRECT_DOMAIN$1 permanent;\n"], ssl_certificates, env)
 
 	# Did the file change? If not, don't bother writing & restarting nginx.
-	nginx_conf_fn = "/etc/nginx/local.conf"
+	nginx_conf_fn = "/etc/nginx/miab.conf"
 	if os.path.exists(nginx_conf_fn):
 		with open(nginx_conf_fn, encoding='utf-8') as f:
 			if f.read() == nginx_conf:
