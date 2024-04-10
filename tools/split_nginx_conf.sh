@@ -3,7 +3,7 @@
 mkdir -p /tmp/sites-miab
 cd  /tmp/sites-miab
 rm -f *.conf xx*
-MIAB_NGINX_CONF="/etc/nginx/conf.d/local.conf"
+MIAB_NGINX_CONF="/etc/nginx/miab.conf"
 csplit "$MIAB_NGINX_CONF" '/^\s*server\s*{*$/' {*}
 mkdir -p /etc/nginx/miab-ssl-conf.d
 for i in xx*; do
