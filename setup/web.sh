@@ -22,6 +22,7 @@ echo "Installing Nginx (web server)..."
 apt_install nginx php"${PHP_VER}"-cli php"${PHP_VER}"-fpm idn2
 
 rm -f /etc/nginx/sites-enabled/default
+cat conf/nginx-sites-default.conf > /etc/nginx/sites-enabled/default
 
 # Copy in a nginx configuration file for common and best-practices
 # SSL settings from @konklone. Replace STORAGE_ROOT so it can find
