@@ -2,5 +2,7 @@
 # tools/split_nginx*.sh does not create a site for that domain in sites-available
 # but still creates /etc/nginx/miab-ssl.conf.d/$host.conf with the certificate settings.
 # include miab-ssl.conf.d/$host*.conf
-# you can also put ssl snippets into /etc/nginx/snippets/$host-ssl.conf 
+# you can also put ssl snippets into /etc/nginx/snippets/$host.conf 
+# eg: ln -s /etc/miab-ssl.conf.d/$host /etc/nginx/snippets/$host-miab-ssl.conf 
+# above gets included via server block include snippets/$host*.conf
 # and http only snippets into /etc/nginx/snippets/http-$host.conf 
