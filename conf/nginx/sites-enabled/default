@@ -12,7 +12,7 @@ server {
 	# error pages and in the "Server" HTTP-Header.
 	server_tokens off;
 
-    include /etc/nginx/snippets/http-$HOSTNAME*.conf
+    include /etc/nginx/snippets/http-$host*.conf
 
 	location / {
 		# Redirect using the 'return' directive and the built-in
