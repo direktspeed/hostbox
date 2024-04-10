@@ -32,8 +32,6 @@ sed "s#STORAGE_ROOT#$STORAGE_ROOT#" \
 # SSL settings from @konklone. Replace STORAGE_ROOT so it can find
 # the DH params.
 rm -f /etc/nginx/nginx-ssl.conf # we used to put it here
-sed "s#STORAGE_ROOT#$STORAGE_ROOT#" \
-	conf/nginx-ssl.conf > /etc/nginx/conf.d/ssl.conf
 
 # Fix some nginx defaults.
 #
