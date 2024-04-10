@@ -27,4 +27,5 @@ for i in xx*; do
 done
 ## Only Transfer really changed files. 
 rsync -hvrP --checksum --delete /tmp/sites-miab /etc/nginx
+ln -s /etc/nginx/sites-miab/* /etc/nginx/sites-enabled
 /usr/sbin/service nginx reload
