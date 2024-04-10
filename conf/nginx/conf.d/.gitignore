@@ -1,0 +1,4 @@
+# this folder supports placing a $host.conf file then
+# tools/split_nginx*.sh does not create a site for that domain in sites-available
+# but still creates /etc/nginx/miab-ssl.conf.d/$host.conf with the certificate settings.
+# include miab-ssl.conf.d/$host*.conf
