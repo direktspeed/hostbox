@@ -1,5 +1,6 @@
 #!/bin/bash
 # should get executed with | grep "\." until we got something better to suppress the numbers
+# find miab dir cat /usr/local/bin/mailinabox | grep "cd " | cut -d' ' -f2 or /etc/mailinabox.conf MAILINABOX_DIR
 mkdir -p /tmp/sites-miab
 cd  /tmp/sites-miab
 rm -f *.conf xx*
@@ -26,3 +27,4 @@ for i in xx*; do
 done
 ## Only Transfer really changed files. 
 rsync -hvrP --checksum --delete /tmp/sites-miab /etc/nginx
+/usr/sbin/service nginx reload
