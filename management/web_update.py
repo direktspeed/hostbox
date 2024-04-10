@@ -80,11 +80,11 @@ def do_web_update(env):
 		with open(os.path.join(os.path.dirname(__file__), "../conf", conf_fn), encoding='utf-8') as f:
 			return f.read()
 
-	# Build an nginx configuration file.
-	nginx_conf = make_domain_config(env['PRIMARY_HOSTNAME'], [template0, "\tinclude /etc/nginx/snippets/miab-primaryonly.conf\n"], ssl_certificates, env)
-
 	# Load the templates.
 	template0 = read_conf("nginx.conf")
+	
+	# Build an nginx configuration file.
+	nginx_conf = make_domain_config(env['PRIMARY_HOSTNAME'], [template0, "\tinclude /etc/nginx/snippets/miab-primaryonly.conf\n"], ssl_certificates, env)
 
 	# Add configuration all other web domains.
 	has_root_proxy_or_redirect = get_web_domains_with_root_overrides(env)
