@@ -81,13 +81,10 @@ def do_web_update(env):
 			return f.read()
 
 	# Build an nginx configuration file.
-	nginx_conf = read_conf("nginx-top.conf")
+	nginx_conf = make_domain_config(env['PRIMARY_HOSTNAME'], [template0, "\tinclude /etc/nginx/snippets/miab-primaryonly.conf\n"], ssl_certificates, env)
 
 	# Load the templates.
 	template0 = read_conf("nginx.conf")
-
-	# Add the PRIMARY_HOST configuration first so it becomes nginx's default server.
-	nginx_conf += make_domain_config(env['PRIMARY_HOSTNAME'], [template0, "\tinclude /etc/nginx/snippets/miab-primaryonly.conf\n"], ssl_certificates, env)
 
 	# Add configuration all other web domains.
 	has_root_proxy_or_redirect = get_web_domains_with_root_overrides(env)
