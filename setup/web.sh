@@ -21,6 +21,8 @@ echo "Installing Nginx (web server)..."
 
 apt_install nginx php"${PHP_VER}"-cli php"${PHP_VER}"-fpm idn2
 
+# Nginx includes in alphanumerical order so _ is first.
+cp -f conf/nginx-top.conf /etc/nginx/conf.d/_top.conf
 cp -f conf/nginx-alldomains.conf /etc/nginx/snippets/miab-domains.conf
 cp -f conf/nginx-primaryonly.conf /etc/nginx/snippets/miab-primaryonly.conf
 
